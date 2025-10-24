@@ -260,3 +260,28 @@ class User(base):
             },
             method="POST",
         )
+
+    def propertyList(self, pageNum: int, pageSize: int, queryCriteria: dict = {}):
+        """
+        客户元数据查询
+        https://tmc.qidian.qq.com/base/console/doc/13761?version=20250714
+        请求示例：
+        {
+        "pageNum": 1,
+        "pageSize": 100,
+        "queryCriteria": {
+            "scene": "fieldManage",
+            "withIdentityMeta": 1
+        }
+        }
+        """
+        api_name = "cdp-entity/user/property/list"
+        return self.request(
+            api_name=api_name,
+            json={
+                "pageNum": pageNum,
+                "pageSize": pageSize,
+                "queryCriteria": queryCriteria,
+            },
+            method="POST",
+        )
